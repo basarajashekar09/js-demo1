@@ -3,7 +3,7 @@ const router = express.Router()
 let users = require('../users')
 
       router.get('/', (req, res) => {
-        //res.send({data: "here is the dataa"})
+        //res.send({data: "here is the data"})
         res.json(users)
       });
       
@@ -29,8 +29,21 @@ let users = require('../users')
       res.status(200).send(employeeDetails);
       });
     
-      router.delete('/', (req, res) => {
-          res.send('employee deleted')  
+      router.delete('/:empId', (req, res) => {
+            const empId = parseInt(req.params.empId);
+            const employeeToDelete =req.body;
+
+            let index =users.findIndex(user => user.id === empId);
+            if (index >=0) {
+                  users.splice(index,1  );
+                  console.log("detailsl found to be deleted",users );
+                  res.send(users )
+
+            }
+            else{
+            res.send('employee Details not found')
+            console.log("details not found")  
+            }
       });
       
 module.exports = router;     

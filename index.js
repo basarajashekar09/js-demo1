@@ -10,7 +10,7 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 // Home route
-app.use("/emp", require('./routes/emp'));
+app.use("/emp", require('./routes/empRoutes'));
 
 // Start server
 app.listen(port, () => {
