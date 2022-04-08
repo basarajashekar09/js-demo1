@@ -12,6 +12,7 @@ app.use(bodyParser.json())
 // Home route
 app.use("/emp", require('./routes/empRoutes'));
 
+
 // Start server
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
